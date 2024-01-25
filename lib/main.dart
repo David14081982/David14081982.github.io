@@ -2,7 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:onboard_animation/onboarding_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+      // Add this
+    PWAInstall().setup(installCallback: () {
+      debugPrint('¡APLICACION INSTALADA!');
+    });
+
+    // Check if installation prompt is enabled
+    if (PWAInstall().installPromptEnabled) {
+      // Call the installation prompt
+      PWAInstall().promptInstall_();
+    }
+
+    runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
